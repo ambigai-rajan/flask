@@ -1,5 +1,15 @@
 from flask import Flask,render_template
 app=Flask(__name__)
+import git
+
+@app.route("/updates",methods=['post'])
+def updates():
+    repo = git.repo('./flask')
+    orgin = repo.remotes.orgin
+    repo.create_head('main',
+    origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
+    origin.pull()
+    return '',200
 
 @app.route("/")
 def index():
