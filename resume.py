@@ -1,6 +1,6 @@
 from flask import Flask,render_template
-app=Flask(__name__)
 import git
+app=Flask(__name__)
 
 @app.route('/updates', methods=['POST'])
 def updates():
