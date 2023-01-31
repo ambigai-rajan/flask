@@ -2,14 +2,13 @@ from flask import Flask,render_template
 app=Flask(__name__)
 import git
 
-@app.route('/updates',methods=['POST'])
+@app.route('/updates', methods=['POST'])
 def updates():
-    repo = git.repo('./flask')
+    repo = git.Repo('./flask')
     origin = repo.remotes.origin
-    repo.create_head('main',
-    origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
+    repo.create_head('main',origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
     origin.pull()
-    return '',200
+    return '', 200
 
 @app.route("/")
 def index():
