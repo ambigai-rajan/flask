@@ -2,7 +2,7 @@ from flask import Flask,render_template
 app=Flask(__name__)
 import git
 
-@app.route("/updates",methods=['post'])
+@app.route('/updates',methods=['POST'])
 def updates():
     repo = git.repo('./flask')
     orgin = repo.remotes.orgin
