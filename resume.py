@@ -5,7 +5,7 @@ import git
 @app.route('/updates',methods=['POST'])
 def updates():
     repo = git.repo('./flask')
-    orgin = repo.remotes.origin
+    origin = repo.remotes.origin
     repo.create_head('main',
     origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
     origin.pull()
